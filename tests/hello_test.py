@@ -5,12 +5,12 @@ from src.hello import handler
 def test_hello_handler():
 
     # Arrange
-    event = {"body": '{"message": "hello.py--hello.handler Called"}'}
+    event = {"pathParameters": {"name": "Dexter-testname"}}
     context = {}
 
     expected = {
         "statusCode": 200,
-        "body": json.dumps(event["body"]),
+        "body": '{"output": "Hello Dexter-testname"}',
         "headers": {"Content-Type": "application/json"},
     }
 
