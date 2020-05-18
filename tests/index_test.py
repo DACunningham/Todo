@@ -6,7 +6,7 @@ from src.index import handler
 def test_index_handler():
 
     # Arrange
-    event = {"body": '{"message": "hello.py--hello.handler Called"}'}
+    event = {"body": {"message": "hello.py--hello.handler Called"}}
     data = {
         "output": event["body"],
         "timestamp": datetime.datetime.utcnow().isoformat(),
@@ -15,12 +15,13 @@ def test_index_handler():
 
     expected = {
         "statusCode": 200,
-        "body": json.dumps(data),
+        "body": data,
         "headers": {"Content-Type": "application/json"},
     }
 
     # Act
     result = handler(event, context)
+    expected["body"]["timestamp"] = result["body"]["timestamp"]
 
     # Arrange
     assert result == expected
