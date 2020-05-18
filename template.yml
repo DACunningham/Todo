@@ -28,8 +28,9 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: !Sub "awscodestar-${ProjectId}-lambda-HelloWorld"
+      CodeUri: /
       Handler: index.handler
-      Runtime: python3.7
+      Runtime: python3.8
       Role:
         Fn::GetAtt:
           - LambdaExecutionRole
@@ -64,8 +65,9 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: !Sub "awscodestar-${ProjectId}-lambda-Hello"
+      CodeUri: /
       Handler: hello.handler
-      Runtime: python3.7
+      Runtime: python3.8
       Role:
         Fn::GetAtt:
           - LambdaExecutionRole
